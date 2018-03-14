@@ -80,4 +80,27 @@ export class FirestoreProvider {
     })
   }
 
+  /*---------------------------EASE FUNCTIONS---------------------------*/
+  inspectDoc(ref: DocPredicate<any>): void {
+    const tick = new Date().getTime();
+    this.doc(ref).snapshotChanges()
+      .take(1)
+      .do(d => {
+        const tock = new Date().getTime() - tick;
+        console.log('Loaded Document in ${tock}ms', d)
+      })
+      .subscribe();
+  }
+
+  inpsectCol(ref: CollectionPredicate<any>): void {
+    const tick = new Date().getTime();
+    this.col(ref).snapshotChanges()
+      .take(1)
+      .do(c => {
+        const tock = new Date().getTime() - tick;
+        console.log('Locaded Collection in ${tock}ms', c)
+      })
+      .subscribe();
+  }
+
 }
