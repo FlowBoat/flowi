@@ -9,6 +9,10 @@ import "rxjs/add/operator/do";
 import * as firebase from "firebase";
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 
+// Custom Type Aliases
+export type CollectionPredicate<T> = string | AngularFirestoreCollection<T>;
+export type DocPredicate<T> = string | AngularFirestoreDocument<T>;
+
 @Injectable()
 export class FirestoreProvider {
 
