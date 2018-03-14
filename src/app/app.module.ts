@@ -6,6 +6,7 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 
 import { MyApp } from './app.component';
+import { PipesModule } from '../pipes/pipes.module';
 import { HomePage } from '../pages/home/home';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -22,7 +23,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    PipesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
