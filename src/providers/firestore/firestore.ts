@@ -103,4 +103,9 @@ export class FirestoreProvider {
       .subscribe();
   }
 
+  // GEOPOINT
+  geopoint(lat: number, lng: number) {
+    return new firebase.firestore.GeoPoint(lat, lng);
+  }
+
 }
