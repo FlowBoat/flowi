@@ -1,0 +1,13 @@
+{
+  "name": "Flowi",
+  "short_name": "Flowi",
+  "start_url": "index.html",
+  "display": "standalone",
+  "icons": [{
+    "src": "assets/imgs/logo2.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }],
+  "background_color": "#4bb7db",
+  "theme_color": "#4bb7db"
+}
