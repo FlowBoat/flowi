@@ -16,6 +16,6 @@ export type DocPredicate<T> = string | AngularFirestoreDocument<T>;
 @Injectable()
 export class FirestoreProvider {
 
-  constructor() { }
+  constructor(private  afs: AngularFirestore) { }
 
 }
