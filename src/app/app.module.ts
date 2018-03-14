@@ -5,6 +5,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { SuiModule } from 'ng2-semantic-ui';
 
 import { FirestoreProvider } from '../providers/firestore/firestore';
 
@@ -25,6 +26,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    SuiModule,
     PipesModule
   ],
   bootstrap: [IonicApp],
