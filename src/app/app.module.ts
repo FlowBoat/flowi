@@ -4,6 +4,9 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+
+import { FirestoreProvider } from '../providers/firestore/firestore';
 
 import { MyApp } from './app.component';
 import { PipesModule } from '../pipes/pipes.module';
@@ -11,8 +14,6 @@ import { HomePage } from '../pages/home/home';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { FirestoreProvider } from '../providers/firestore/firestore';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 @NgModule({
   declarations: [
