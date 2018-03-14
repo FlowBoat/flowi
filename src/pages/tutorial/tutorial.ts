@@ -7,10 +7,7 @@ export interface Slide {
   image: string;
 }
 
-@IonicPage({
-  name: 'tutorial',
-  segment: 'welcome'
-})
+@IonicPage()
 @Component({
   selector: 'page-tutorial',
   templateUrl: 'tutorial.html',
