@@ -40,4 +40,44 @@ export class FirestoreProvider {
       return doc.payload.data() as T
     });
   }
+
+  /*---------------------------CRUD FUNCTIONS---------------------------*/
+  // Server timestamp is the only secure way of getting the time.
+  get timestamp() {
+    return firebase.firestore.FieldValue.serverTimestamp()
+  }
+
+  update<T>(ref: DocPredicate<T>, data: any) {
+    return this.doc(ref).update({
+      ...data,
+      updatedAt: this.timestamp
+    })
+  }
+
+  set<T>(ref: DocPredicate<T>, data: any) {
+    const timestamp = this.timestamp;
+    return this.doc(ref).set({
+      ...data,
+      updatedAt: timestamp,
+      createdAt: timestamp
+    })
+  }
+
+  add<T>(ref: CollectionPredicate<T>, data: any) {
+    const timestamp = this.timestamp;
+    return this.col(ref).add({
+      ...data,
+      updatedAt: timestamp,
+      createdAt: timestamp
+    })
+  }
+
+  upsert<T>(ref: DocPredicate<T>, data: any) {
+    const doc = this.doc(ref).snapshotChanges().take(1).toPromise();
+
+    return doc.then(snap => {
+      return snap.payload.exists ? this.update(ref, data) : this.set(ref, data)
+    })
+  }
+
 }
