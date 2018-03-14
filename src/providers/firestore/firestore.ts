@@ -18,4 +18,26 @@ export class FirestoreProvider {
 
   constructor(private  afs: AngularFirestore) { }
 
+  /*---------------------------HELPER FUNCTIONS---------------------------*/
+  // Return References
+  col<T>(ref: CollectionPredicate<T>, queryFn?): AngularFirestoreCollection<T> {
+    return typeof ref === 'string' ? this.afs.collection<T>(ref, queryFn) : ref;
+  }
+
+  doc<T>(ref: DocPredicate<T>): AngularFirestoreDocument<T> {
+    return typeof ref === 'string' ? this.afs.doc<T>(ref) : ref;
+  }
+
+  //Return Observables
+  col$<T>(ref: CollectionPredicate<T>, queryFn?): Observable<T[]> {
+    return this.col(ref, queryFn).snapshotChanges().map(docs => {
+      return docs.map(a => a.payload.doc.data()) as T[]
+    });
+  }
+
+  doc$<T>(ref: DocPredicate<T>): Observable<T> {
+    return this.doc(ref).snapshotChanges().map(doc => {
+      return doc.payload.data() as T
+    });
+  }
 }
