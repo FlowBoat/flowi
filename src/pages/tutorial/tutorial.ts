@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage } from 'ionic-angular';
+import { IonicPage, MenuController, NavController, Platform } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -8,6 +8,6 @@ import { IonicPage } from 'ionic-angular';
 })
 export class TutorialPage {
 
-  constructor() {}
+  constructor(public navCtrl: NavController, public menu: MenuController, public platform: Platform) {}
 
 }
